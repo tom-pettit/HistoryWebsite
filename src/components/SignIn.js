@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import SignInForm from './SignInForm';
 
 
 
@@ -153,13 +154,8 @@ const AddArticle = () => {
                     <Typography className={classes.carddescription}>
                         Please enter the username and password in order to add an article to this site.
                     </Typography>
-                    <form className={classes.root, classes.credentials} noValidate autoComplete="off">
-                        <TextField id="standard-basic" label="Username" color='secondary'/>
-                        <br></br>
-                        <TextField id="standard-basic"  label="Password" />
-                        <br></br>
-                        <Button variant='outlined' className={classes.button}>Submit</Button>
-                    </form>
+                    <br></br>
+                    <SignInForm />
                     </CardContent>
 
                 </div>

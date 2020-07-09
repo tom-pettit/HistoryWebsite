@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './components/Home'
 import ArticleFeed from './components/ArticleFeed'
-import AddArticle from './components/AddArticle'
+import AddArticle from './components/SignIn'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 function App() {

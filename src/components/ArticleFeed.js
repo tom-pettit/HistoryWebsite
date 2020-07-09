@@ -9,134 +9,32 @@ import brumafriendimg from '../images/brumafriend.jpeg';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import IconButton from '@material-ui/core/IconButton';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import { connect } from 'react-redux'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      border: 'none',
-      boxShadow: 'none',
-      marginRight: 0
-    },
-    details: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    content: {
-      flex: '1 0 auto',
-      ['@media (max-width: 660px)']: {
-          paddingBottom: 0
-      },
-  
-    },
-    cover: {
-      ['@media (min-width: 860px)']: {
-          width: 110,
-          height: 110,
-          margin: 20,
-          marginLeft: 40,
-      },
-      ['@media (max-width: 860px)']: {
-          width: 90,
-          height: 90,
-          margin: 15,
-          marginLeft: 42,
-          marginRight: 0
-      },
-      ['@media (max-width: 660px)']: {
-          width: 70,
-          height: 70,
-          margin: 10,
-          marginLeft: 8,
-          marginRight: 0
-      },
-  
-    },
-    cardtitle: {
-      ['@media (min-width: 860px)']: {
-          fontSize: 20,
-          marginBottom: 10,
-          marginTop: 10
-      },
-      ['@media (max-width: 860px)']: {
-          fontSize: 15,
-          marginBottom: 10
-      },
-      ['@media (max-width: 660px)']: {
-          fontSize: 12,
-          marginBottom: 5
-  
-      },
-  
-        fontWeight: 'bold',
-        fontFamily: 'Raleway',
-    },
-    carddescription: {
-        fontFamily: 'Raleway',
-        ['@media (min-width: 860px)']: {
-          fontSize: 15,
-          width: 600,
-        },
-        ['@media (max-width: 860px)']: {
-          fontSize: 12,
-          width: 350,
-        },
-        ['@media (max-width: 660px)']: {
-          fontSize: 9,
-          marginBottom: 0,
-          width: 210
-      },
-    },
-    box: {
-      ['@media (min-width: 860px)']: {
-          width: '810px',
-          marginLeft: '-405px',
-      },
-      ['@media (max-width: 860px)']: {
-          width: '530px',
-          marginLeft: '-265px',
-      },
-      ['@media (max-width: 660px)']: {
-          width: '320px',
-          marginLeft: '-160px',
-      },
-  
-  
-      position: 'absolute',
-      left: '50%',
-      top: '35%',
-  
-    },
-    icons: {
-      ['@media (max-width: 660px)']: {
-          fontSize: 'small'
-      },
-    }
-  }));
 
-const ArticleFeed = () => {
-    const classes = useStyles()
+class ArticleFeed extends React.Component {
+  render() {
+    console.log(this.props)
     return (
-        <div className={classes.box}>
-           <Card className={classes.root}>
-                <CardMedia
-                    className={classes.cover}
-                    image={brumafriendimg}
-                    title="Live from space album cover"
-                />
-                <div className={classes.details}>
-                    <CardContent className={classes.content}>
-                    <Typography component="h5" variant="h5" className={classes.cardtitle}>
-                        article title
-                    </Typography>
-                    <Typography className={classes.carddescription}>
-                        Another boring article. blah blah blah blah blah
-                    </Typography>
-                    </CardContent>
-
-                </div>
-            </Card> 
+      <div className="row container" style={{fontFamily: 'Raleway'}}>
+      <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh',fontFamily: 'Raleway'}}>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh',fontFamily: 'Raleway'}}>
+        <div class="card" style={{boxShadow: 'none', border: 'none',fontFamily: 'Raleway', maxWidth: '800px'}}>
+          <div class="card-content black-text" style={{fontFamily: 'Raleway'}}>
+            <span class="card-title" style={{fontSize: '2vw', fontWeight: '400'}} ><a href='/view_article' style={{textDecoration: 'none', color: 'black'}}>John Smith</a></span>
+            <p style={{width: '100%', fontSize: '1.5vw'}}>A boring article description of an article piers wrote that will be very boring</p>
+          </div>
         </div>
+        </div>
+      </div>
+    </div>
     )
+}}
+
+const mapStateToProps = (state) => {
+  return {
+    articles: state.article.articles
+  }
 }
 
-export default ArticleFeed
+export default connect(mapStateToProps)(ArticleFeed)
