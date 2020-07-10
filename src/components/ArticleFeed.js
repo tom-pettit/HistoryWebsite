@@ -11,6 +11,9 @@ import IconButton from '@material-ui/core/IconButton';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import { connect } from 'react-redux'
 import Articles from './Articles'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+
 
 
 class ArticleFeed extends React.Component {
@@ -26,9 +29,15 @@ class ArticleFeed extends React.Component {
 }}
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    articles: state.article.articles
+    articles: state.firestore.ordered.articles
   }
 }
 
-export default connect(mapStateToProps)(ArticleFeed)
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'articles'}
+  ])
+)(ArticleFeed)
