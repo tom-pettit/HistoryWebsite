@@ -1,15 +1,16 @@
 import React from 'react';
-import Profile from './components/Home'
+import Home from './components/Home'
 import ArticleFeed from './components/ArticleFeed'
-import AddArticle from './components/SignIn'
+import SignIn from './components/SignIn'
+import CreateArticle from './components/CreateArticle'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Route exact path='/' component={Profile}/>
-        <Route path='/add_article' component={AddArticle}/>
+        <Route exact path='/' component={Home}/>
+        <Route path='/create_article' component={CreateArticle}/>
       </div>
     </BrowserRouter>
   );

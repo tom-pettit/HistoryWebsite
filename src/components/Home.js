@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import AddIcon from '@material-ui/icons/Add';
 import ArticleFeed from './ArticleFeed'
+import { connect } from 'react-redux'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -116,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function MediaControlCard() {
+const Home = () => {
   const classes = useStyles();
 
   return (
@@ -139,7 +140,7 @@ export default function MediaControlCard() {
                       <IconButton href='https://twitter.com/BrumafriendHist' target='_blank'>
                           <TwitterIcon className={classes.icons}/>
                       </IconButton>
-                      <IconButton href='/add_article'>
+                      <IconButton href='/create_article'>
                           <AddIcon className={classes.icons}/>
                       </IconButton>
                   </CardActions>
@@ -153,7 +154,11 @@ export default function MediaControlCard() {
           </Card>
           
       </div>
-      <ArticleFeed />
+      <br></br>
+      <div style={{position: 'absolute', top: '40%', left: '50%'}}><ArticleFeed /></div>
+      
     </div>
   );
 }
+
+export default Home
