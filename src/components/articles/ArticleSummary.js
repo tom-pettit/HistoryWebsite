@@ -5,6 +5,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import brumafriendimg from '../../images/brumafriend.jpeg';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -127,14 +129,13 @@ const ArticleSummary = ({article}) => {
                             {article.title}
                         </Typography>
                         <Typography className={classes.carddescription}>
-                            {article.tags}
+                            <LocalOfferIcon fontSize='small' style={{marginRight:'10', verticalAlign: 'middle', color: 'grey'}}/>{article.tags}
                         </Typography>
                         </CardContent>
                     </div>
                     <CardMedia
                         className={classes.cover}
-                        image={brumafriendimg}
-                        title="Live from space album cover"
+                        image={article.imageurl}
                     />
                 </Card>
             </div>

@@ -149,7 +149,7 @@ const AddArticle = (props) => {
 
     const createArticlePage = auth.uid ? <CreateArticle /> : <SignInForm />;
     const createArticleTitle = auth.uid ? 'Create An Article' : 'Authentication Required';
-    const createArticleDesc = auth.uid ? 'Fill in the fields below to create your new article' : 'Please enter the email and password in order to add an article to this site.'
+    const createArticleDesc = auth.uid ? 'Fill in the fields below to create your new article.' : 'Please enter the email and password in order to add an article to this site.'
 
     return (
         <div className={classes.box}>

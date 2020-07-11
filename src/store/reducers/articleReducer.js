@@ -1,8 +1,6 @@
 const initState = {
     articles: [
-        {id: 1, title: 'Why the Jews were discriminated against in Tudor England 1905', tags: 'history', body: 'article'},
-        {id: 2, title: 'Alex', tags: 'history, jews, tudor', body: 'article'},
-        {id: 3, title: 'Ollie', tags: 'history', body: 'article'}
+
     ]
 }
 

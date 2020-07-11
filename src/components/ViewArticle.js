@@ -8,6 +8,8 @@ import brumafriendimg from '../images/brumafriend.jpeg';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import './ViewArticle.css';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -75,18 +77,44 @@ const useStyles = makeStyles((theme) => ({
     carddescription: {
         fontFamily: 'Raleway',
         ['@media (min-width: 860px)']: {
+          fontSize: 17,
+          width: 612,
+          maxWidth: 500,
+          paddingTop: 0,
+          verticalAlign: 'middle'
+        },
+        ['@media (max-width: 860px)']: {
+          fontSize: 14,
+          width: 310,
+          paddingTop: 0
+
+        },
+        ['@media (max-width: 660px)']: {
+          fontSize: 10,
+          marginBottom: 0,
+          maxWidth: 160,
+          paddingTop: 0
+
+      },
+    },
+    carddescriptionv2: {
+        fontFamily: 'Raleway',
+        ['@media (min-width: 860px)']: {
           fontSize: 15,
           width: 612,
-          maxWidth: 500
+          maxWidth: 500,
+          paddingTop: 10
         },
         ['@media (max-width: 860px)']: {
           fontSize: 12,
           width: 310,
+          paddingTop: 10
         },
         ['@media (max-width: 660px)']: {
           fontSize: 8,
           marginBottom: 0,
-          maxWidth: 160
+          maxWidth: 160,
+          paddingTop: 10
       },
     },
     box: {
@@ -116,13 +144,14 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         top: '10%',
         left: '50%'
-    }
+    },
   }));
   
 
 const ViewArticle = (props) => {
     const classes = useStyles()
     const { article } = props;
+
     if (article) {
         return(
             <div className="row container" className={classes.article} style={{fontFamily: 'Raleway'}}>
@@ -134,16 +163,15 @@ const ViewArticle = (props) => {
                                 {article.title}
                             </Typography>
                             <Typography className={classes.carddescription}>
-                                {article.tags}
+                                <LocalOfferIcon fontSize='small' style={{marginRight:'10', verticalAlign: 'middle', color: 'grey'}}/>{article.tags}
                             </Typography>
-                            <Typography className={classes.carddescription}>
-                                {article.body}
+                            <Typography id='articlebody' className={classes.carddescriptionv2} dangerouslySetInnerHTML={{__html: article.body}}>
                             </Typography>
                             </CardContent>
                         </div>
                         <CardMedia
                             className={classes.cover}
-                            image={brumafriendimg}
+                            image={article.imageurl}
                             title="Live from space album cover"
                         />
                     </Card>

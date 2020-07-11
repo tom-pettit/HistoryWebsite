@@ -4,6 +4,7 @@ export const createArticle = (article) => {
         const firestore = getFirestore()
         firestore.collection('articles').add({
             title: article.title,
+            imageurl: article.imageurl,
             tags: article.tags,
             body: article.body
         }).then(() => {

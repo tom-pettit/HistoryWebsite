@@ -6,6 +6,7 @@ class CreateArticle extends React.Component {
 
     state = {
         title: '',
+        imageurl: '',
         tags: '',
         body: ''
     }
@@ -27,7 +28,8 @@ class CreateArticle extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <input id='title' onChange={this.handleChange} placeholder='title'></input>
                 <input id='tags' onChange={this.handleChange} placeholder='tags'></input>
-                <input id='body' onChange={this.handleChange} placeholder='body'></input>
+                <input id='imageurl' onChange={this.handleChange} placeholder='image url'></input>
+                <textarea id='body' onChange={this.handleChange} placeholder='start writing...'></textarea>
                 <button>Upload</button>
             </form>
         )
