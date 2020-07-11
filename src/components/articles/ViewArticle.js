@@ -4,12 +4,13 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import brumafriendimg from '../images/brumafriend.jpeg';
+import brumafriendimg from '../../images/brumafriend.jpeg';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import './ViewArticle.css';
+import ViewArticleNavbar from "./ViewArticleNavbar";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -154,27 +155,30 @@ const ViewArticle = (props) => {
 
     if (article) {
         return(
-            <div className="row container" className={classes.article} style={{fontFamily: 'Raleway'}}>
-                <div className={classes.box}>
-                    <Card className={classes.root}>
-                        <div className={classes.details}>
-                            <CardContent className={classes.content}>
-                            <Typography component="h5" variant="h5" className={classes.cardtitle}>
-                                {article.title}
-                            </Typography>
-                            <Typography className={classes.carddescription}>
-                                <LocalOfferIcon fontSize='small' style={{marginRight:'10', verticalAlign: 'middle', color: 'grey'}}/>{article.tags}
-                            </Typography>
-                            <Typography id='articlebody' className={classes.carddescriptionv2} dangerouslySetInnerHTML={{__html: article.body}}>
-                            </Typography>
-                            </CardContent>
-                        </div>
-                        <CardMedia
-                            className={classes.cover}
-                            image={article.imageurl}
-                            title="Live from space album cover"
-                        />
-                    </Card>
+            <div>
+                <ViewArticleNavbar />
+                <div className="row container" className={classes.article} style={{fontFamily: 'Raleway'}}>
+                    <div className={classes.box}>
+                        <Card className={classes.root}>
+                            <div className={classes.details}>
+                                <CardContent className={classes.content}>
+                                <Typography component="h5" variant="h5" className={classes.cardtitle}>
+                                    {article.title}
+                                </Typography>
+                                <Typography className={classes.carddescription}>
+                                    <LocalOfferIcon fontSize='small' style={{marginRight:'10', verticalAlign: 'middle', color: 'grey'}}/>{article.tags}
+                                </Typography>
+                                <Typography id='articlebody' className={classes.carddescriptionv2} dangerouslySetInnerHTML={{__html: article.body}}>
+                                </Typography>
+                                </CardContent>
+                            </div>
+                            <CardMedia
+                                className={classes.cover}
+                                image={article.imageurl}
+                                title="Live from space album cover"
+                            />
+                        </Card>
+                    </div>
                 </div>
             </div>
     )} else {

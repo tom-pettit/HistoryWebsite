@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import brumafriendimg from '../images/brumafriend.jpeg';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import IconButton from '@material-ui/core/IconButton';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -13,7 +12,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SignInForm from './SignInForm';
 import { connect } from 'react-redux'
-import CreateArticle from './articles/CreateArticle';
+import CreateArticle from '../articles/CreateArticle';
+import CreateArticleNavbar from '../articles/CreateArticleNavbar'
 
 
 
@@ -152,6 +152,8 @@ const AddArticle = (props) => {
     const createArticleDesc = auth.uid ? 'Fill in the fields below to create your new article.' : 'Please enter the email and password in order to add an article to this site.'
 
     return (
+      <div>
+        <CreateArticleNavbar />
         <div className={classes.box}>
            <Card className={classes.root}>
                 <div className={classes.details}>
@@ -163,12 +165,17 @@ const AddArticle = (props) => {
                         { createArticleDesc }
                     </Typography>
                     <br></br>
+
+
                     { createArticlePage }
+
+
                     </CardContent>
 
                 </div>
             </Card> 
         </div>
+      </div>
     )
 }
 

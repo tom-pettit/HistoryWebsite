@@ -5,12 +5,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import brumafriendimg from '../images/brumafriend.jpeg';
+import brumafriendimg from '../../images/brumafriend.jpeg';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import IconButton from '@material-ui/core/IconButton';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import AddIcon from '@material-ui/icons/Add';
-import ArticleFeed from './articles/ArticleFeed'
+import ArticleFeed from '../articles/ArticleFeed'
 import { connect } from 'react-redux'
 
 

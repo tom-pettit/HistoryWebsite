@@ -1,9 +1,9 @@
 import React from 'react';
-import Home from './components/Home'
+import Home from './components/home/Home'
 import ArticleFeed from './components/articles/ArticleFeed'
-import SignIn from './components/SignIn'
+import SignIn from './components/signin/SignIn'
 import CreateArticle from './components/articles/CreateArticle'
-import ViewArticle from './components/ViewArticle.js'
+import ViewArticle from './components/articles/ViewArticle.js'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 function App() {
