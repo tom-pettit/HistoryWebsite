@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import brumafriendimg from '../images/brumafriend.jpeg';
+import brumafriendimg from '../../images/brumafriend.jpeg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
         },
         ['@media (max-width: 860px)']: {
           fontSize: 12,
-          width: 310,
+          maxWidth: 310,
         },
         ['@media (max-width: 660px)']: {
           fontSize: 8,

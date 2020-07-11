@@ -9,8 +9,8 @@ const Articles = ({articles}) => {
         <div>
             { articles && articles.map(article => {
                 return (
-                    <Link to={'/view_article/'+article.id}>
-                        <ArticleSummary article={article} key={article.id} />
+                    <Link to={'/view_article/'+article.id} key={article.id} >
+                        <ArticleSummary article={article}/>
                     </Link>
                 )
             })}

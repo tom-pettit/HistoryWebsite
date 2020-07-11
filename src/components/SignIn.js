@@ -12,6 +12,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SignInForm from './SignInForm';
+import { connect } from 'react-redux'
+import CreateArticle from './articles/CreateArticle';
 
 
 
@@ -141,21 +143,27 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const AddArticle = () => {
+const AddArticle = (props) => {
+    const {auth} = props
     const classes = useStyles()
+
+    const createArticlePage = auth.uid ? <CreateArticle /> : <SignInForm />;
+    const createArticleTitle = auth.uid ? 'Create An Article' : 'Authentication Required';
+    const createArticleDesc = auth.uid ? 'Fill in the fields below to create your new article' : 'Please enter the email and password in order to add an article to this site.'
+
     return (
         <div className={classes.box}>
            <Card className={classes.root}>
                 <div className={classes.details}>
                     <CardContent className={classes.content}>
                     <Typography component="h5" variant="h5" className={classes.cardtitle}>
-                        Authentication Required
+                        { createArticleTitle }
                     </Typography>
                     <Typography className={classes.carddescription}>
-                        Please enter the username and password in order to add an article to this site.
+                        { createArticleDesc }
                     </Typography>
                     <br></br>
-                    <SignInForm />
+                    { createArticlePage }
                     </CardContent>
 
                 </div>
@@ -164,4 +172,10 @@ const AddArticle = () => {
     )
 }
 
-export default AddArticle
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
+
+export default connect(mapStateToProps)(AddArticle)

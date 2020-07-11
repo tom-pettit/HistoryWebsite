@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createArticle } from '../store/actions/articleActions'
+import { createArticle } from '../../store/actions/articleActions'
 
 class CreateArticle extends React.Component {
 
@@ -13,6 +13,7 @@ class CreateArticle extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.createArticle(this.state)
+        
     }
 
     handleChange = (e) => {
@@ -27,7 +28,7 @@ class CreateArticle extends React.Component {
                 <input id='title' onChange={this.handleChange} placeholder='title'></input>
                 <input id='tags' onChange={this.handleChange} placeholder='tags'></input>
                 <input id='body' onChange={this.handleChange} placeholder='body'></input>
-                <button>Submit</button>
+                <button>Upload</button>
             </form>
         )
     }
@@ -41,4 +42,11 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateArticle)
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateArticle)

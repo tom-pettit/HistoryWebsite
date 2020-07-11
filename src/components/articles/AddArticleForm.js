@@ -1,5 +1,5 @@
 import React from 'react'
-import AddArticle from './SignIn'
+import AddArticle from '../SignIn'
 
 class AddArticleForm extends React.Component {
 
