@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 
 const Articles = ({articles}) => {
-    console.log(articles)
     return (
         <div>
             { articles && articles.map(article => {

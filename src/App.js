@@ -1,9 +1,9 @@
 import React from 'react';
 import Home from './components/home/Home'
-import ArticleFeed from './components/articles/ArticleFeed'
-import SignIn from './components/signin/SignIn'
-import CreateArticle from './components/articles/CreateArticle'
-import ViewArticle from './components/articles/ViewArticle.js'
+import ArticleFeed from './components/articles/feed/ArticleFeed'
+import CreateArticle from './components/signin/SignIn'
+import ViewArticle from './components/articles/view/ViewArticle.js'
+import EditArticle from './components/articles/edit/EditArticle'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 function App() {
@@ -11,8 +11,9 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Route exact path='/' component={Home}/>
-        <Route path='/sign_in' component={SignIn}/>
+        <Route path='/create_article' component={CreateArticle}/>
         <Route path='/view_article/:id' component={ViewArticle}/>
+        <Route path='/edit_article/:id' component={EditArticle}/>
       </div>
     </BrowserRouter>
   );

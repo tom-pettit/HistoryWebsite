@@ -14,3 +14,19 @@ export const createArticle = (article) => {
         })
     }
 }
+
+export const editArticle = (article) => {
+    return (dispatch, getState, {getFirebase, getFirestore}) => {
+        const firestore = getFirestore()
+        firestore.collection('articles').doc(article.prev_id).update({
+            title: article.title,
+            imageurl: article.imageurl,
+            tags: article.tags,
+            body: article.body
+        }).then(() => {
+            dispatch({ type: 'EDIT_ARTICLE', article: article})
+        }).catch((err) => {
+            dispatch({ type: 'EDIT_ARTICLE_ERROR', error: err})
+        })
+    }
+}

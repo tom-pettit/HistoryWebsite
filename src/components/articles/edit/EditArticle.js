@@ -10,10 +10,14 @@ import IconButton from '@material-ui/core/IconButton';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import SignInForm from './SignInForm';
+import SignInForm from '../../signin/SignInForm';
 import { connect } from 'react-redux'
-import CreateArticle from '../articles/create/CreateArticle';
-import CreateArticleNavbar from '../articles/create/CreateArticleNavbar'
+import EditArticleForm from './EditArticleForm'
+import CreateArticleNavbar from '../create/CreateArticleNavbar'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
+
+
 
 
 
@@ -143,13 +147,15 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const AddArticle = (props) => {
-    const {auth} = props
+const EditArticle = (props) => {
+    const {auth, article} = props
     const classes = useStyles()
 
-    const createArticlePage = auth.uid ? <CreateArticle /> : <SignInForm />;
-    const createArticleTitle = auth.uid ? 'Create An Article' : 'Authentication Required';
-    const createArticleDesc = auth.uid ? 'Fill in the fields below to create your new article.' : 'Please enter the email and password in order to add an article to this site.'
+    const articleTitle = article ? article.title : null
+
+    const createArticlePage = auth.uid ? <EditArticleForm article={article} id={props.match.params.id}/> : <SignInForm />;
+    const createArticleTitle = auth.uid ? 'Editing Article: '+articleTitle: 'Authentication Required';
+    const createArticleDesc = auth.uid ? 'Change the fields below to edit your article' : 'Please enter the email and password in order to add an article to this site.'
 
     return (
       <div>
@@ -179,10 +185,19 @@ const AddArticle = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.firebase.auth
-  }
+const mapStateToProps = (state, ownProps) => {
+    const id = ownProps.match.params.id
+    const articles = state.firestore.data.articles
+    const article = articles ? articles[id] : null
+    return {
+        auth: state.firebase.auth,
+        article: article
+    }
 }
 
-export default connect(mapStateToProps)(AddArticle)
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'articles'}
+    ])
+)(EditArticle)

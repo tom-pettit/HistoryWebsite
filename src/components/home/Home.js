@@ -10,7 +10,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import IconButton from '@material-ui/core/IconButton';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import AddIcon from '@material-ui/icons/Add';
-import ArticleFeed from '../articles/ArticleFeed'
+import ArticleFeed from '../articles/feed/ArticleFeed'
 import { connect } from 'react-redux'
 
 
@@ -140,7 +140,7 @@ const Home = () => {
                       <IconButton href='https://twitter.com/BrumafriendHist' target='_blank'>
                           <TwitterIcon className={classes.icons}/>
                       </IconButton>
-                      <IconButton href='/sign_in'>
+                      <IconButton href='/create_article'>
                           <AddIcon className={classes.icons}/>
                       </IconButton>
                   </CardActions>

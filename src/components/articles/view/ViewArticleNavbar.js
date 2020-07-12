@@ -10,6 +10,13 @@ import CreateIcon from '@material-ui/icons/Create';
 import ShareIcon from '@material-ui/icons/Share';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { withRouter } from 'react-router'
+import {connect} from 'react-redux'
+import { compose } from 'redux'
+import EditButton from './ViewArticleEditButton'
+import {Link} from 'react-router-dom'
+import ShareMenu from './ShareMenu'
+
+
 
 
 class ViewArticleNavbar extends React.Component {
@@ -22,6 +29,9 @@ class ViewArticleNavbar extends React.Component {
     }
 
     render() {
+        const { auth } = this.props
+        const id = this.props.location.pathname.slice(14)
+
         return (
             <div style={{flexGrow: 1}}>
               <AppBar color='white' position="static" style={{boxShadow: 'none'}}>
@@ -29,12 +39,8 @@ class ViewArticleNavbar extends React.Component {
                   <Button onClick={this.goBack} color='inherit'>
                     <ArrowBackIosIcon />
                   </Button>
-                  <Button color="inherit">
-                    <CreateIcon />
-                  </Button>
-                  <Button color="inherit">
-                    <ShareIcon />
-                  </Button>
+                  <Link to={'/edit_article/'+id} color='black' style={{color: 'rgb(33,33,33'}}><EditButton auth={auth}/></Link>
+                  <ShareMenu />
                 </Toolbar>
               </AppBar>
             </div>
@@ -42,5 +48,6 @@ class ViewArticleNavbar extends React.Component {
     }
   
 }
+
 
 export default withRouter(ViewArticleNavbar)
